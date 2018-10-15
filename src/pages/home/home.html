@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Damian Eventos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <!--<button ion-button (click)="logIn()">Login</button>-->
+
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+<ion-list>
+  <ion-item *ngFor="let item of items">
+    {{ item }}
+  </ion-item>
+</ion-list>
+  <ion-card>
+    <img src="assets/imgs/nin-live.png"/>
+    <ion-card-content>
+      <ion-card-title>
+        Show Sepultura 20/10/2018
+        </ion-card-title>
+      <p>
+        O Sepultura anunciou nesta quarta-feira, 25, 
+        que irá se apresentar em São Paulo durante a turnê mundial de 
+        divulgação do disco Machine Messiah (2017)
+      </p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+      <img src="assets/imgs/banda.jpg"/>
+      <ion-card-content>
+        <ion-card-title>
+          Foo Fighters 25/12/2018
+          </ion-card-title>
+        <p>
+          A Banda Foo Fighters anunciou nesta quarta-feira, 
+          que irá se apresentar em Rio Branco durante a turnê mundial de 
+          divulgação do disco Back in the House (2018)
+            </p>
+      </ion-card-content>
+    </ion-card>
+  
+  <button ion-button secondary menuToggle>Abrir Menu</button>
+  <!-- <button ion-button (click)="Buscar()">Buscar</button>-->
+
+
+</ion-content>

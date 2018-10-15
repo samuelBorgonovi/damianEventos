@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div style="text-align: center" heigth="16px" width="30px">
+    <ion-icon name="contact"></ion-icon>
+  </div>               
+  <ion-row>
+    <ion-col>
+      <ion-list inset>
+        <ion-item>
+          <!--<ion-icon name="contact"></ion-icon>-->
+          <ion-input placeholder="e-mail" type="text" #mail></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input placeholder="senha" type="password" #password></ion-input>
+        </ion-item>
+      </ion-list>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col>
+      <button ion-button class="submit-btn" (click)="logIn(mail.value,password.value)" type="submit">Login
+      </button>
+    </ion-col>
+  </ion-row>
+</ion-content>
