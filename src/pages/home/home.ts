@@ -1,34 +1,65 @@
-import { Component } from '@angular/core';
-import { NavController, ModalController } from 'ionic-angular';
-import { LoginPage } from '../login/login';
-import { BuscarPage } from '../buscar/buscar';
+import {Component} from "@angular/core";
+import {NavController, PopoverController} from "ionic-angular";
+import {Storage} from '@ionic/storage';
+
+import {NotificationsPage} from "../notifications/notifications";
+import {SettingsPage} from "../settings/settings";
+import {TripsPage} from "../trips/trips";
+import {SearchLocationPage} from "../search-location/search-location";
 
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html',
+  templateUrl: 'home.html'
 })
 
 export class HomePage {
-
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController) {
-
+  // search condition
+  public search = {
+    name: "Acre, Brazil",
+    date: new Date().toISOString()
   }
 
-  logIn() {
-    let profileModal = this.modalCtrl.create(LoginPage);
-    profileModal.present();
+  constructor(private storage: Storage, public nav: NavController, public popoverCtrl: PopoverController) {
+  }
 
-    profileModal.onDidDismiss(data => {  
-      console.log(data);
+  ionViewWillEnter() {
+    // this.search.pickup = "Rio de Janeiro, Brazil";
+    // this.search.dropOff = "Same as pickup";
+    this.storage.get('pickup').then((val) => {
+      if (val === null) {
+        this.search.name = "Acre, Brazil"
+      } else {
+        this.search.name = val;
+      }
+    }).catch((err) => {
+      console.log(err)
     });
- }
-  Buscar(){
-    let profileModal = this.modalCtrl.create(BuscarPage);
-    profileModal.present();
+  }
 
-    profileModal.onDidDismiss(data => {  
-      console.log(data);
+  // go to result page
+  doSearch() {
+    this.nav.push(TripsPage);
+  }
+
+  // choose place
+  choosePlace(from) {
+    this.nav.push(SearchLocationPage, from);
+  }
+
+  // to go account page
+  goToAccount() {
+    this.nav.push(SettingsPage);
+  }
+
+  presentNotifications(myEvent) {
+    console.log(myEvent);
+    let popover = this.popoverCtrl.create(NotificationsPage);
+    popover.present({
+      ev: myEvent
     });
   }
-  }
+
+}
+
+//

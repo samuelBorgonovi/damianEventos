@@ -1,33 +1,71 @@
-<ion-header>
+<!-- -->
+<ion-content padding class="animated fadeIn login auth-page">
+  <div class="login-content">
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+    <!-- Logo -->
+    <div padding-horizontal text-center class="animated fadeInDown">
+      <div class="logo"></div>
+      <h2 ion-text class="text-primary">
+        <strong>Damian</strong> Portal Eventos
+      </h2>
+    </div>
 
-</ion-header>
+    <!-- Login form -->
+    <form class="list-form">
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="mail" item-start class="text-primary"></ion-icon>
+          Email
+        </ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
 
+      <ion-item>
+        <ion-label floating>
+          <ion-icon name="lock" item-start class="text-primary"></ion-icon>
+          Senha
+        </ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+    </form>
 
-<ion-content padding>
-  <div style="text-align: center" heigth="16px" width="30px">
-    <ion-icon name="contact"></ion-icon>
-  </div>               
-  <ion-row>
-    <ion-col>
-      <ion-list inset>
-        <ion-item>
-          <!--<ion-icon name="contact"></ion-icon>-->
-          <ion-input placeholder="e-mail" type="text" #mail></ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-input placeholder="senha" type="password" #password></ion-input>
-        </ion-item>
-      </ion-list>
-    </ion-col>
-  </ion-row>
-  <ion-row>
-    <ion-col>
-      <button ion-button class="submit-btn" (click)="logIn(mail.value,password.value)" type="submit">Login
+    <p text-right ion-text color="secondary" tappable (click)="forgotPass()"><strong>Esqueceu a senha ?</strong></p>
+
+    <div>
+      <button ion-button icon-start block color="dark" tappable (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        Entrar
       </button>
-    </ion-col>
-  </ion-row>
+
+      <p text-center ion-text color="secondary">Ou entre com</p>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-facebook">
+              <ion-icon name="logo-facebook"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-twitter">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </button>
+          </ion-col>
+          <ion-col col-4>
+            <button ion-button icon-only block class="btn-gplus">
+              <ion-icon name="logo-googleplus"></ion-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+
+    <!-- Other links -->
+    <div text-center margin-top>
+      <span ion-text color="secondary" tappable (click)="register()">Usuario Novo? <strong>Clique aqui</strong></span>
+    </div>
+
+  </div>
 </ion-content>

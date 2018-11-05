@@ -1,41 +1,57 @@
-import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Component, ViewChild } from "@angular/core";
+import { Platform, Nav } from "ionic-angular";
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Keyboard } from '@ionic-native/keyboard';
 
-import { AnexosPage } from '../pages/anexos/anexos';
-import { HomePage } from '../pages/home/home';
-import { MeusEventosPage } from '../pages/meus-eventos/meus-eventos';
-import { LoginPage } from '../pages/login/login';
+import { HomePage } from "../pages/home/home";
+import { LoginPage } from "../pages/login/login";
+
+export interface MenuItem {
+    title: string;
+    component: any;
+    icon: string;
+}
 
 @Component({
   templateUrl: 'app.html'
 })
+
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = LoginPage;
 
-  pages: Array<{title: string, component: any}>;
+  appMenuItems: Array<MenuItem>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(
+    public platform: Platform,
+    public statusBar: StatusBar,
+    public splashScreen: SplashScreen,
+    public keyboard: Keyboard
+  ) {
     this.initializeApp();
 
-    // used for an example of ngFor and navigation
-    this.pages = [
-      { title: 'Meu Eventos', component: MeusEventosPage },
-      { title: 'Anexos', component: AnexosPage },
-      { title: 'Login', component: LoginPage}
+    this.appMenuItems = [
+      {title: 'Página Inicial ', component: HomePage, icon: 'home'}
     ];
-
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
+
+      //*** Control Splash Screen
+      // this.splashScreen.show();
+      // this.splashScreen.hide();
+
+      //*** Control Status Bar
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.statusBar.overlaysWebView(false);
+
+      //*** Control Keyboard
+     // this.keyboard.disableScroll(true);
     });
   }
 
@@ -44,4 +60,9 @@ export class MyApp {
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
+
+  logout() {
+    this.nav.setRoot(LoginPage);
+  }
+
 }
