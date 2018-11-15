@@ -3,6 +3,7 @@ import { NavController, AlertController, ToastController, MenuController } from 
 import { HomePage } from "../home/home";
 import { RegisterPage } from "../register/register";
 import { FormBuilder, Validators } from '@angular/forms';
+import { UsuarioDao } from "../../dao/usuario-dao";
 
 @Component({
   selector: 'page-login',
@@ -21,7 +22,8 @@ export class LoginPage {
     senha: ""
   }
 
-  constructor(public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController, public formBuilder: FormBuilder) {
+  constructor(public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController, public formBuilder: FormBuilder,
+    private usuarioDao: UsuarioDao) {
     this.loginForm = formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(20),
@@ -53,11 +55,16 @@ export class LoginPage {
       } else {
         this.messagePassword = "";
       }
+      alert("linha58")
     }
     else {
-      alert("Login Realizado");
+      if (this.usuarioDao.login(email, password)) {
+        this.nav.setRoot(HomePage);
+      } else {
+        this.messagePassword = "Usuario ou senha não cadastrados"
+      }
     }
-    this.nav.setRoot(HomePage);
+    //
   }
   //
 

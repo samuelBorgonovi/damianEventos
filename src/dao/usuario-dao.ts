@@ -24,14 +24,12 @@ export class UsuarioDao {
         return this.storage.set(key, usuario)
     }
 
-    login(usuario: any) {
+    login(email,password) {
         let user = {}
         return this.storage.forEach(dbuser => {
-            if (usuario.login == dbuser.login && usuario.senha == dbuser.senha) {
-                user = usuario
+            if (email == dbuser.login && password == dbuser.senha) {
+                return true;
             }
-        }).then(() => {
-            return user
-        })
+        });
     }
 }
