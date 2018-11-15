@@ -39,6 +39,7 @@ export class HomePage {
 
   // go to result page
   doSearch() {
+    //console.log("cliquei em search")
     this.nav.push(TripsPage);
   }
 
@@ -49,6 +50,7 @@ export class HomePage {
 
   // to go account page
   goToAccount() {
+    console.log("cliquei aqui")
     this.nav.push(SettingsPage);
   }
 

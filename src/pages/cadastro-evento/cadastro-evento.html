@@ -1,0 +1,54 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Damian</strong> Portal Eventos
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <br><h1 style="text-align:center;">Cadastre seu evento</h1><br>
+  <!-- Login form -->
+  <form class="list-form">
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="titulo" item-start class="text-primary"></ion-icon>
+        Titulo
+      </ion-label>
+      <ion-input type="titulo" [(ngModel)]="cadastroEvento.titulo" name="titulo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="desc" item-start class="text-primary"></ion-icon>
+        Descrição
+      </ion-label>
+      <ion-input type="descricao" [(ngModel)]="cadastroEvento.descricao" name="descricao"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="valor" item-start class="text-primary"></ion-icon>
+        Valor
+      </ion-label>
+      <ion-input type="valor" [(ngModel)]="cadastroEvento.valor" name="valor"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label floating>
+        <ion-icon name="data" item-start class="text-primary"></ion-icon>
+        Data
+      </ion-label>
+      <ion-input type="data" [(ngModel)]="cadastroEvento.data" name="data"></ion-input>
+    </ion-item>
+  </form>
+
+  <button ion-button block color="dark" tappable (click)="salvar()">
+      Entrar
+    </button>
+
+</ion-content>

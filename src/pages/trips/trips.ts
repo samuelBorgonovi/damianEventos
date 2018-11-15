@@ -1,23 +1,27 @@
-import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
-import {TripService} from "../../services/trip-service";
-import {TripDetailPage} from "../trip-detail/trip-detail";
+import { Component, OnInit } from "@angular/core";
+import { NavController } from "ionic-angular";
+import { TripDetailPage } from "../trip-detail/trip-detail";
+import { CadastroEventoDao } from "../../dao/cadastroEvento-dao";
 
 @Component({
   selector: 'page-trips',
   templateUrl: 'trips.html'
 })
-export class TripsPage {
-  // list of trips
-  public trips: any;
+export class TripsPage implements OnInit {
+  eventos: any[] = []
+  constructor(public nav: NavController, private cadastroEventoDao: CadastroEventoDao) {
 
-  constructor(public nav: NavController, public tripService: TripService) {
-    // set sample data
-    this.trips = tripService.getAll();
   }
 
+  ngOnInit(): void {
+    this.cadastroEventoDao.getAll().then(
+      response => {
+        this.eventos = response
+      }
+    )
+  }
   // view trip detail
   viewDetail(id) {
-    this.nav.push(TripDetailPage, {id: id});
+    this.nav.push(TripDetailPage, { id: id });
   }
 }

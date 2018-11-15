@@ -23,6 +23,9 @@ import {RegisterPage} from "../pages/register/register";
 import {SearchLocationPage} from "../pages/search-location/search-location";
 import {TripDetailPage} from "../pages/trip-detail/trip-detail";
 import {TripsPage} from "../pages/trips/trips";
+import { UsuarioDao } from "../dao/usuario-dao";
+import { CadastroEventoPage } from "../pages/cadastro-evento/cadastro-evento";
+import { CadastroEventoDao } from "../dao/cadastroEvento-dao";
 
 // import services
 // end import services
@@ -42,7 +45,8 @@ import {TripsPage} from "../pages/trips/trips";
     RegisterPage,
     SearchLocationPage,
     TripDetailPage,
-    TripsPage
+    TripsPage,
+    CadastroEventoPage
   ],
   imports: [
     BrowserModule,
@@ -68,7 +72,8 @@ import {TripsPage} from "../pages/trips/trips";
     RegisterPage,
     SearchLocationPage,
     TripDetailPage,
-    TripsPage
+    TripsPage,
+    CadastroEventoPage
   ],
   providers: [
     StatusBar,
@@ -76,7 +81,9 @@ import {TripsPage} from "../pages/trips/trips";
     Keyboard,
     ActivityService,
     TripService,
-    WeatherProvider
+    WeatherProvider,
+    UsuarioDao,
+    CadastroEventoDao
   ]
 })
 

@@ -7,6 +7,7 @@ import { Keyboard } from '@ionic-native/keyboard';
 
 import { HomePage } from "../pages/home/home";
 import { LoginPage } from "../pages/login/login";
+import { CadastroEventoPage } from "../pages/cadastro-evento/cadastro-evento";
 
 export interface MenuItem {
     title: string;
@@ -34,7 +35,8 @@ export class MyApp {
     this.initializeApp();
 
     this.appMenuItems = [
-      {title: 'Página Inicial ', component: HomePage, icon: 'home'}
+      {title: 'Página Inicial ', component: HomePage, icon: 'home'},
+      {title: 'Cadastrar Eventos', component: CadastroEventoPage, icon: 'cadastro-evento'}
     ];
   }
 

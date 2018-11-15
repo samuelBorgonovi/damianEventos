@@ -1,17 +1,34 @@
-import {Component} from "@angular/core";
-import {NavController, AlertController, ToastController, MenuController} from "ionic-angular";
-import {HomePage} from "../home/home";
-import {RegisterPage} from "../register/register";
+import { Component } from "@angular/core";
+import { NavController, AlertController, ToastController, MenuController } from "ionic-angular";
+import { HomePage } from "../home/home";
+import { RegisterPage } from "../register/register";
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html'
 })
 export class LoginPage {
+  public loginForm: any;
+  messageEmail = ""
+  messagePassword = "";
+  errorEmail = false;
+  errorPassword = false;
 
-  constructor(public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController) {
-    this.menu.swipeEnable(false);
+  usuario: any = {
+    email: "",
+    name: "",
+    senha: ""
   }
+
+  constructor(public nav: NavController, public forgotCtrl: AlertController, public menu: MenuController, public toastCtrl: ToastController, public formBuilder: FormBuilder) {
+    this.loginForm = formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.compose([Validators.minLength(6), Validators.maxLength(20),
+      Validators.required])],
+    });
+  }
+  //this.menu.swipeEnable(false);
 
   // go to register page
   register() {
@@ -20,8 +37,29 @@ export class LoginPage {
 
   // login and go to home page
   login() {
+    let { email, password } = this.loginForm.controls;
+
+    if (!this.loginForm.valid) {
+      if (!email.valid) {
+        this.errorEmail = true;
+        this.messageEmail = "Ops! Email inválido";
+      } else {
+        this.messageEmail = "";
+      }
+
+      if (!password.valid) {
+        this.errorPassword = true;
+        this.messagePassword = "A senha precisa ter de 6 a 20 caracteres"
+      } else {
+        this.messagePassword = "";
+      }
+    }
+    else {
+      alert("Login Realizado");
+    }
     this.nav.setRoot(HomePage);
   }
+  //
 
   forgotPass() {
     let forgot = this.forgotCtrl.create({

@@ -1,7 +1,8 @@
-import {Component} from "@angular/core";
-import {NavController} from "ionic-angular";
-import {LoginPage} from "../login/login";
-import {HomePage} from "../home/home";
+import { Component } from "@angular/core";
+import { NavController } from "ionic-angular";
+import { LoginPage } from "../login/login";
+import { HomePage } from "../home/home";
+import { UsuarioDao } from "../../dao/usuario-dao";
 
 
 @Component({
@@ -9,13 +10,21 @@ import {HomePage} from "../home/home";
   templateUrl: 'register.html'
 })
 export class RegisterPage {
-
-  constructor(public nav: NavController) {
+  usuario: any = {
+    email: "",
+    name: "",
+    senha: ""
+  }
+  constructor(public nav: NavController, private usuarioDao: UsuarioDao) {
   }
 
   // register and go to home page
   register() {
-    this.nav.setRoot(HomePage);
+    this.usuarioDao.create(new Date().toISOString(), this.usuario).then(
+      () => {
+        this.nav.setRoot(HomePage);
+      }
+    )
   }
 
   // go to login page
