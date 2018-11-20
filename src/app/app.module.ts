@@ -26,6 +26,9 @@ import {TripsPage} from "../pages/trips/trips";
 import { UsuarioDao } from "../dao/usuario-dao";
 import { CadastroEventoPage } from "../pages/cadastro-evento/cadastro-evento";
 import { CadastroEventoDao } from "../dao/cadastroEvento-dao";
+import { FileChooser } from '@ionic-native/file-chooser';
+import { FilePath } from '@ionic-native/file-path';
+import { Base64 } from '@ionic-native/base64';
 
 // import services
 // end import services
@@ -83,7 +86,10 @@ import { CadastroEventoDao } from "../dao/cadastroEvento-dao";
     TripService,
     WeatherProvider,
     UsuarioDao,
-    CadastroEventoDao
+    CadastroEventoDao,
+    FileChooser,
+    FilePath,
+    Base64
   ]
 })
 

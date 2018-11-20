@@ -11,7 +11,8 @@
 </ion-header>
 
 <ion-content padding>
-  <br><h1 style="text-align:center;">Cadastre seu evento</h1><br>
+  <br>
+  <h1 style="text-align:center;">Cadastre seu evento</h1><br>
   <!-- Login form -->
   <form class="list-form">
     <ion-item>
@@ -47,8 +48,10 @@
     </ion-item>
   </form>
 
+  <button ion-button (click)='chooseFile()'>Button</button>
+
   <button ion-button block color="dark" tappable (click)="salvar()">
-      Entrar
-    </button>
+    Entrar
+  </button>
 
 </ion-content>
