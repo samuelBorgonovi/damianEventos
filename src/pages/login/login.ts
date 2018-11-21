@@ -55,7 +55,6 @@ export class LoginPage {
       } else {
         this.messagePassword = "";
       }
-      alert("linha58")
     }
     else {
       if (this.usuarioDao.login(email, password)) {
